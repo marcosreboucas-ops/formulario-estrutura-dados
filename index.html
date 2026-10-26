@@ -1,0 +1,132 @@
+ <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+
+
+        button {
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1>Cadastro de Alunos</h1>
+
+
+    <form id="formulario">
+        <label>Nome do Filme:</label>
+        <input type="text" id="nome" required>
+
+
+        <label for="Gênero">Escolha um Gênero :</label>
+
+
+        <select id="Gênero" name="Gênero">
+        <option value="ação">Ação</option>
+        <option value="comédia">Comédia</option>
+        <option value="terror">Terror</option>
+        <option value="drama">Drama</option>
+        <option Value="animação">Animação</option>
+</select>
+         
+        <br /><br /><label>Nota:</label>
+        <input type="Number" id="nota" min="1" max="10" required>
+
+        <br /> <label for="assistiria de novo"> Assistiria de Novo?</label>
+          <select id="resposta" name="resposta">
+    <option value="sim">Sim</option>
+    <option value="nao">Não</option>
+  </select>
+
+       
+
+
+      <br /> <br /> <button type="submit">Enviar</button>
+    </form>
+
+
+    <h2>Alunos Cadastrados</h2>
+
+
+    <ol id="listaAlunos"></ol>
+
+
+    <script>
+        // Array para armazenar os alunos
+        let alunos = [];
+
+
+        const formulario = document.getElementById("formulario");
+        const lista = document.getElementById("listaAlunos");
+
+
+        formulario.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+
+            // Captura os valores
+            let nome = document.getElementById("nome").value;
+            let email = document.getElementById("email").value;
+            let ra = document.getElementById("ra").value;
+
+
+            // Cria o objeto aluno
+            let aluno = {
+                nome: nome,
+                email: email,
+                ra: ra
+            };
+
+
+            // Adiciona ao array
+            alunos.push(aluno);
+
+
+            // Cria um item na lista
+            let item = document.createElement("li");
+
+
+            item.textContent = nome + " - " + email + " - RA: " + ra;
+
+
+            // Adiciona o item na lista
+            lista.appendChild(item);
+
+
+            // Mostra o array no console
+            console.log(alunos);
+
+
+            // Limpa o formulário
+            formulario.reset();
+        });
+    </script>
+
+
+</body>
+</html>
+
+
